@@ -1,0 +1,361 @@
+﻿/* Base styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: #f0f0f0;
+  color: #333;
+  line-height: 1.6;
+  padding: 20px;
+  min-height: 100vh;
+}
+
+ul.nested {
+	margin-left: 20px;
+}
+
+.product-form {
+  max-width: 800px;
+  margin: 0 auto;
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+/* Category tree */
+.category-tree {
+  margin-bottom: 2rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.category-header {
+  padding: 1rem;
+  background: #f8f9fa;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.category-header:hover {
+  background: #f1f3f5;
+}
+
+/* Управление видимостью только через классы */
+.nested {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: 
+    max-height 0.3s ease-out,
+    opacity 0.2s ease 0.1s,
+    transform 0.2s ease;
+  transform: translateY(-10px);
+}
+
+.nested.active {
+  max-height: 1000vh;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ========== Category hover & selected styles ========== */
+.category-tree li {
+  position: relative;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+/* ==== Подсветка при наведении на метку ==== */
+.category-tree li .label,
+.category-tree li .caret {
+  display: inline-block;      /* чтобы padding работал только вокруг текста */
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  transition: background 0.2s, color 0.2s;
+}
+
+/* Ховер только по .label и .caret */
+.category-tree li .label:hover,
+.category-tree li .caret:hover {
+  background-color: #e6f7ff;
+}
+
+/* Выделенный пункт (только метка) */
+.category-tree li .label.selected,
+.category-tree li .caret.selected {
+  background-color: #1890ff;
+  color: #fff;
+}
+
+
+
+
+
+.caret {
+  cursor: pointer;
+  padding: 0.5rem 0;
+  display: flex;
+  align-items: center;
+}
+
+.caret::before {
+  content: '';
+  border: solid #666;
+  border-width: 0 2px 2px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(-45deg);
+  margin-right: 10px;
+  transition: transform 0.2s;
+}
+
+.caret.open::before {
+  transform: rotate(45deg);
+}
+
+/* Изначально скрытые блоки */
+.category-tree .nested:not(.active),
+.toggle-block .additional-params:not(.active) {
+  display: block !important;
+  visibility: hidden;
+  position: absolute;
+}
+
+.category-tree .nested.active,
+.toggle-block .additional-params.active {
+  visibility: visible;
+  position: relative;
+}
+
+/* Form groups */
+.form-group {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 1.2rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: all 0.2s;
+}
+
+select {
+  appearance: none;
+  background: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e") no-repeat right 1rem center/15px;
+}
+
+label {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: white;
+  padding: 0 5px;
+  color: #666;
+  pointer-events: none;
+  transition: all 0.2s;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: #4d90fe;
+  box-shadow: 0 0 0 2px rgba(77,144,254,0.2);
+}
+
+input:focus + label,
+input:not(:placeholder-shown) + label,
+select:focus + label,
+select:valid + label,
+textarea:focus + label,
+textarea:not(:placeholder-shown) + label {
+  top: 0;
+  font-size: 0.8em;
+  color: #4d90fe;
+}
+
+/* Toggle block */
+.toggle-block {
+  margin-top: 2rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+}
+
+.toggle-header {
+  padding: 1rem;
+  background: #f8f9fa;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.toggle-header:hover {
+  background: #f1f3f5;
+}
+
+.additional-params {
+  padding: 1rem;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+}
+
+.additional-params.active {
+  max-height: 1000px;
+}
+
+/* Button */
+
+.buttons-container {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+button[type="submit"] {
+  width: 100%;
+  padding: 1.2rem;
+  background: #007AFF;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+button[type="submit"]:hover {
+  background: #0063CC;
+}
+
+button[type="submit"].outline {
+    background: white;
+    color: #007AFF;
+    border: 2px solid #007AFF;
+}
+
+button[type="submit"].outline:hover {
+    background: #f0f0f0;
+    border-color: #0063CC;
+}
+
+/* Контейнер для автокомплита */
+.autocomplete-container {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+/* Стили для выпадающего списка */
+.autocomplete-dropdown {
+    position: absolute;
+    width: 100%;
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    max-height: 250px;
+    overflow-y: auto;
+    display: none;
+    border-radius: 4px;
+	z-index: 2;
+}
+
+/* Список элементов */
+.dropdown-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/* Элементы списка */
+.dropdown-list li {
+    padding: 12px 16px;
+    cursor: pointer;
+    font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Активное состояние элемента */
+.dropdown-list li:hover {
+    background: #f5f5f5;
+    color: #333;
+}
+
+/* Активно выбранный элемент */
+.dropdown-list li.active {
+    background: #e0e0e0;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  body {
+    padding: 10px;
+  }
+
+  .product-form {
+    padding: 1rem;
+  }
+
+  input, select, textarea {
+    padding: 1rem;
+    font-size: 15px;
+  }
+
+  button[type="submit"] {
+    padding: 1rem;
+	font-size: 15px;
+  }
+  .buttons-container {
+		gap: 10px;
+    }
+	.autocomplete-dropdown {
+        max-height: 200px;
+    }
+    
+    .dropdown-list li {
+        padding: 10px 12px;
+    }
+}
+
+@media (max-width: 480px) {
+  .caret::before {
+    margin-right: 5px;
+  }
+
+  label {
+    font-size: 14px;
+  }
+}
+
+/* iPhone 14 specific */
+@media only screen 
+  and (device-width: 390px) 
+  and (device-height: 844px) 
+  and (-webkit-device-pixel-ratio: 3) {
+  input, select, textarea {
+    font-size: 16px;
+  }
+  
+  button[type="submit"] {
+    padding: 1.2rem;
+  }
+}
+
+/* Адаптивные стили */
+@media (max-width: 768px) {
+
+}
