@@ -48,5 +48,6 @@ $html = str_replace('<span class="caret">', '<span class="caret label">', $html)
 
 
 $treeHtml = buildTree($categories);
+echo $treeHtml;
 odbc_close($conn);
 ?>
