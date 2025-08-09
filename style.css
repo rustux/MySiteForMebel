@@ -16,16 +16,14 @@ body {
 
 .tabs {
   display: flex;
-  margin-bottom: 1rem;
-  border-bottom: 1px solid #ccc;
+  padding-left: 20px;
 }
 
 .tab-button {
   padding: 1rem;
   cursor: pointer;
-  background: #f1f1f1;
-  border: 1px solid #ccc;
-  border-bottom: none;
+  background: #0063CC;
+  border: none;
   margin-right: 0.25rem;
   border-radius: 8px 8px 0 0;
 }
@@ -33,6 +31,7 @@ body {
 .tab-button.active {
   background: #fff;
   font-weight: 600;
+  color: black;
 }
 
 .tab-content {
