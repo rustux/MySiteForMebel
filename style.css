@@ -22,7 +22,8 @@ body {
 .tab-button {
   padding: 1rem;
   cursor: pointer;
-  background: #0063CC;
+  background: #0063AF;
+  color: white;
   border: none;
   margin-right: 0.25rem;
   border-radius: 8px 8px 0 0;
@@ -255,6 +256,11 @@ button[type="submit"] {
   font-weight: 600;
   cursor: pointer;
   transition: background 0.2s;
+}
+
+.buttons-container {
+	display: flex;
+	gap: 15px;
 }
 
 button[type="submit"]:hover {
