@@ -17,6 +17,7 @@ body {
 .tabs {
   display: flex;
   padding-left: 20px;
+  padding-left: 20px;
 }
 
 .tab-button {
@@ -256,6 +257,12 @@ button[type="submit"] {
   font-weight: 600;
   cursor: pointer;
   transition: background 0.2s;
+}
+
+button .outline {
+	background: #FFF;
+	border: 2px;
+	border-color: #007AFF;
 }
 
 .buttons-container {
