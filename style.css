@@ -259,7 +259,7 @@ button[type="submit"] {
   transition: background 0.2s;
 }
 
-button .button.outline {
+button[type="submit"] .outline {
 	background: #FFF;
 	border: 2px;
 	border-color: #007AFF;
