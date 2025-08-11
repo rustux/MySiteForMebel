@@ -261,8 +261,13 @@ button[type="submit"] {
 
 button[type="submit"].outline {
 	background: #FFF;
-	border: 2px;
-	border-color: #007AFF;
+	border: 2px solid #007AFF;
+	color: #007AFF;
+	
+}
+
+button[type="submit"].outline:hover {
+	background: #f8f9fa;
 }
 
 .buttons-container {
